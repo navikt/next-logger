@@ -47,7 +47,7 @@ Simply pipe the output of your development server into pino pretty:
 }
 ```
 
-### Step 4 (Optional): Integarting with [next-logger](https://www.npmjs.com/package/next-logger)
+### Step 4 (Optional): Integrating with [next-logger](https://www.npmjs.com/package/next-logger)
 
 The pino configuration from this library can be shared with [next-logger](https://www.npmjs.com/package/next-logger).
 
