@@ -10,7 +10,7 @@ export const logger = (defaultConfig = {}): pino.Logger =>
             },
             log: (object: any) => {
                 if ('err' in object) {
-                    object.stack = object.err.stack;
+                    object.stack_trace = object.err.stack;
                 }
                 return object;
             },
