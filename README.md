@@ -1,6 +1,6 @@
 # next-logger
 
-A simple logger that lets you log from both the frontend and the backend. Both show up in [logs.adeo.no](https://logs.adeo.no) under `+application:yourapp` with correct log level.
+A simple logger that lets you log from both the frontend and the backend. Both will log in a JSON format that [logs.adeo.no](https://logs.adeo.no) understands. And all logs are grouped under your application (`+application:yourapp`) with correct log level.
 
 ## Getting started
 
