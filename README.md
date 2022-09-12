@@ -4,6 +4,16 @@ A simple logger that lets you log from both the frontend and the backend. Both s
 
 ## Getting started
 
+### Installation
+
+```bash
+yarn add @navikt/next-logger pino
+```
+
+```bash
+npm i @navikt/next-logger pino
+```
+
 ### Step 1: API route
 You need an API route that will receive all the log statements.
 
@@ -17,7 +27,27 @@ export { pinoLoggingRoute as default } from '@navikt/next-logger';
 
 Anywhere in your application where you want to log, you should import `import { logger } from '@navikt/next-logger';`, this is a [pino](https://github.com/pinojs/pino/blob/master/docs/api.md#logger) instance, use it to log, for example: `logger.warn("Uh oh")`.
 
-### Step 3 (Optional): Integarting with [next-logger](https://www.npmjs.com/package/next-logger)
+### Step 3: pino-pretty
+
+If you want pino-pretty for local development (and you probably do, simply install it and pipe it:
+
+```bash
+yarn add -D pino-pretty
+```
+
+```bash
+npm i --save-dev pino-pretty
+```
+
+Simply pipe the output of your development server into pino pretty:
+
+```
+"scripts": {
+  "dev": "next dev | pino-pretty",
+}
+```
+
+### Step 4 (Optional): Integarting with [next-logger](https://www.npmjs.com/package/next-logger)
 
 The pino configuration from this library can be shared with [next-logger](https://www.npmjs.com/package/next-logger).
 
@@ -46,6 +76,8 @@ configureLogger({
 
 Or if you only want to change the base path:
 
+```ts
 configureLogger({
     basePath: '/my/base/path',
 })
+```
