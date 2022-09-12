@@ -39,9 +39,3 @@ export const logger = typeof window !== 'undefined' ? getFrontendLogger() : crea
 export const createChildLogger = (requestId: string): pino.Logger => {
     return logger.child({ x_request_id: requestId });
 };
-
-
-configureLogger({
-    basePath: '/my/base/path',
-    apiPath: '/api/other-logger',
-})
