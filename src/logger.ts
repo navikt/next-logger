@@ -8,7 +8,7 @@ interface LoggerConfiguration {
 }
 
 let config: LoggerConfiguration | null = null;
-const configureLogger = (configuration: LoggerConfiguration) => {
+export const configureLogger = (configuration: LoggerConfiguration) => {
     config = configuration
 };
 
