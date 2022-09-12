@@ -1,0 +1,26 @@
+{
+    "name": "@navikt/next-logger",
+    "version": "1.0.3",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsc --declaration"
+    },
+    "peerDependencies": {
+        "next": "12",
+        "pino": "8"
+    },
+    "devDependencies": {
+        "@navikt/eslint-config-teamsykmelding": "^0.20.0",
+        "@types/node": "^18.7.16",
+        "next": "^12.3.0",
+        "pino": "^8.5.0",
+        "typescript": "^4.8.3"
+    },
+    "eslintConfig": {
+        "extends": [
+            "@navikt/eslint-config-teamsykmelding"
+        ]
+    },
+    "prettier": "@navikt/eslint-config-teamsykmelding/prettier"
+}
