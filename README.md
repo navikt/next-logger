@@ -29,5 +29,23 @@ const { backendLogger } = require('@navikt/next-logger');
 module.exports = {
     logger: backendLogger,
 };
-
 ```
+
+## Configuration
+
+If your application is using a base path, or you want to have your logger on a different API-route, you can configure the logger.
+
+In your `_app.tsx`, on root in the file, you can use `configureLogger` as such:
+
+```ts
+configureLogger({
+    basePath: '/my/base/path',
+    apiPath: '/api/other-logger',
+})
+```
+
+Or if you only want to change the base path:
+
+configureLogger({
+    basePath: '/my/base/path',
+})
