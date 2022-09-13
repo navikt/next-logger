@@ -1,40 +1,20 @@
 import pino from 'pino';
 
-import { logger as backendLogger } from './next-logger.config';
+import { logger as backendLogger } from './backendLogger';
+import { logger as frontendLogger } from './frontendLogger';
 
-interface LoggerConfiguration {
+export interface LoggerConfiguration {
     basePath?: string;
     apiPath?: string;
 }
 
 let config: LoggerConfiguration | null = null;
+
 export const configureLogger = (configuration: LoggerConfiguration) => {
-    config = configuration
+    config = configuration;
 };
 
-const getFrontendLogger = (): pino.Logger =>
-    pino({
-        browser: {
-            transmit: {
-                send: async (_, logEvent) => {
-                    try {
-                        await fetch(`${config?.basePath ?? ''}${config?.apiPath ?? '/api/logger'}`, {
-                            method: 'POST',
-                            headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify(logEvent),
-                        });
-                    } catch (e) {
-                        console.warn(e);
-                        console.warn('Unable to log to backend', logEvent);
-                    }
-                },
-            },
-        },
-    });
-
-const createBackendLogger = (): pino.Logger => backendLogger();
-
-export const logger = typeof window !== 'undefined' ? getFrontendLogger() : createBackendLogger();
+export const logger = typeof window !== 'undefined' ? frontendLogger(config) : backendLogger();
 
 export const createChildLogger = (requestId: string): pino.Logger => {
     return logger.child({ x_request_id: requestId });

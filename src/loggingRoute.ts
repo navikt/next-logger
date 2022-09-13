@@ -11,19 +11,18 @@ export const pinoLoggingRoute = (req: NextApiRequest, res: NextApiResponse): voi
         return;
     }
 
-    const { level, ts, ...rest }: pino.LogEvent = req.body;
+    const { level, ts }: pino.LogEvent = req.body;
+    const label = level.label as unknown as LogLevels;
+    const messages: [objOrMsg: unknown, msgOrArgs?: string] = req.body.messages;
 
-    rest.messages.forEach((message) => {
-        const log = typeof message === 'string' ? { message } : message;
-        const label = level.label as unknown as LogLevels;
-        logger[label]({
-            ...log,
+    logger
+        .child({
             x_timestamp: ts,
             x_isFrontend: true,
             x_userAgent: req.headers['user-agent'],
             x_request_id: req.headers['x-request-id'] ?? 'not-set',
-        });
-    });
+        })
+        [label](...messages);
 
     res.status(200).json({ ok: `ok` });
 };
