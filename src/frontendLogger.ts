@@ -1,13 +1,13 @@
 import pino from 'pino';
 import { getConfig } from './config';
 
-export const logger = (): pino.Logger => {
-    const config = getConfig();
-
-    return pino({
+export const logger = (): pino.Logger =>
+    pino({
         browser: {
             transmit: {
                 send: async (_, logEvent) => {
+                    const config = getConfig();
+
                     try {
                         await fetch(`${config?.basePath ?? ''}${config?.apiPath ?? '/api/logger'}`, {
                             method: 'POST',
@@ -25,7 +25,6 @@ export const logger = (): pino.Logger => {
             },
         },
     });
-};
 
 function errorifyMessages(logEvent: pino.LogEvent): pino.LogEvent {
     logEvent.messages = logEvent.messages.map((message) => {
