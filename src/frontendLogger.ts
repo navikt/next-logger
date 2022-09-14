@@ -1,8 +1,10 @@
 import pino from 'pino';
-import { LoggerConfiguration } from './logger';
+import { getConfig } from './config';
 
-export const logger = (config: LoggerConfiguration | null): pino.Logger =>
-    pino({
+export const logger = (): pino.Logger => {
+    const config = getConfig();
+
+    return pino({
         browser: {
             transmit: {
                 send: async (_, logEvent) => {
@@ -23,6 +25,7 @@ export const logger = (config: LoggerConfiguration | null): pino.Logger =>
             },
         },
     });
+};
 
 function errorifyMessages(logEvent: pino.LogEvent): pino.LogEvent {
     logEvent.messages = logEvent.messages.map((message) => {
