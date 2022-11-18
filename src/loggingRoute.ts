@@ -8,7 +8,7 @@ type LogLevels = Exclude<keyof BaseLogger, 'string' | 'level'>;
 const levels: LogLevels[] = ['error', 'debug', 'fatal', 'info', 'trace', 'silent', 'warn'];
 
 function isValidLoggingLabel(label: unknown): label is LogLevels {
-    return typeof label === 'string' && label in levels;
+    return typeof label === 'string' && levels.includes(label);
 }
 
 export const pinoLoggingRoute = (req: NextApiRequest, res: NextApiResponse): void => {
