@@ -1,40 +1,40 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import pino, { BaseLogger } from 'pino';
+import { NextApiRequest, NextApiResponse } from 'next'
+import pino, { BaseLogger } from 'pino'
 
-import { logger } from './logger';
+import { logger } from './logger'
 
-type LogLevels = Exclude<keyof BaseLogger, 'string' | 'level'>;
+type LogLevels = Exclude<keyof BaseLogger, 'string' | 'level'>
 
 const validLogLevels: Record<LogLevels, LogLevels> = {
-    "error": "error",
-    "debug": "debug",
-    "fatal": "fatal",
-    "info": "info",
-    "trace": "trace",
-    "silent": "silent",
-    "warn": "warn",
- } as const;
+    error: 'error',
+    debug: 'debug',
+    fatal: 'fatal',
+    info: 'info',
+    trace: 'trace',
+    silent: 'silent',
+    warn: 'warn',
+} as const
 
 function isValidLoggingLabel(label: unknown): label is LogLevels {
-    return typeof label === "string" && label in validLogLevels;
+    return typeof label === 'string' && label in validLogLevels
 }
 
 export const pinoLoggingRoute = (req: NextApiRequest, res: NextApiResponse): void => {
     if (req.method !== 'POST') {
-        res.status(405).json({ error: 'Method Not Allowed' });
-        return;
+        res.status(405).json({ error: 'Method Not Allowed' })
+        return
     }
 
-    const { level, ts }: pino.LogEvent = req.body;
-    const label: unknown = level.label;
+    const { level, ts }: pino.LogEvent = req.body
+    const label: unknown = level.label
     if (!isValidLoggingLabel(label)) {
         res.status(400).json({
             error: `Invalid label ${label}`,
-        });
-        return;
+        })
+        return
     }
 
-    const messages: [objOrMsg: unknown, msgOrArgs?: string] = req.body.messages;
+    const messages: [objOrMsg: unknown, msgOrArgs?: string] = req.body.messages
 
     logger
         .child({
@@ -43,7 +43,7 @@ export const pinoLoggingRoute = (req: NextApiRequest, res: NextApiResponse): voi
             x_userAgent: req.headers['user-agent'],
             x_request_id: req.headers['x-request-id'] ?? 'not-set',
         })
-        [label](...messages);
+        [label](...messages)
 
-    res.status(200).json({ ok: `ok` });
-};
+    res.status(200).json({ ok: `ok` })
+}

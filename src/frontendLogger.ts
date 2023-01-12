@@ -1,12 +1,12 @@
-import pino from 'pino';
-import { getConfig } from './config';
+import pino from 'pino'
+import { getConfig } from './config'
 
 export const logger = (): pino.Logger =>
     pino({
         browser: {
             transmit: {
                 send: async (_, logEvent) => {
-                    const config = getConfig();
+                    const config = getConfig()
 
                     try {
                         await fetch(`${config?.basePath ?? ''}${config?.apiPath ?? '/api/logger'}`, {
@@ -16,15 +16,15 @@ export const logger = (): pino.Logger =>
                                 // Hackily massage messages from exceptions into being { err: {...} } to normalize how logging looks
                                 errorifyMessages(logEvent),
                             ),
-                        });
+                        })
                     } catch (e) {
-                        console.warn(e);
-                        console.warn('Unable to log to backend', logEvent);
+                        console.warn(e)
+                        console.warn('Unable to log to backend', logEvent)
                     }
                 },
             },
         },
-    });
+    })
 
 function errorifyMessages(logEvent: pino.LogEvent): pino.LogEvent {
     logEvent.messages = logEvent.messages.map((message) => {
@@ -35,10 +35,10 @@ function errorifyMessages(logEvent: pino.LogEvent): pino.LogEvent {
                     stack: message.stack,
                     message: message.msg ?? message.message,
                 },
-            };
+            }
         }
-        return message;
-    });
+        return message
+    })
 
-    return logEvent;
+    return logEvent
 }
