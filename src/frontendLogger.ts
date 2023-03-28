@@ -7,6 +7,7 @@ export const logger = (): pino.Logger =>
             transmit: {
                 send: async (_, logEvent) => {
                     const config = getConfig()
+                    config?.onLog?.(logEvent)
 
                     try {
                         await fetch(`${config?.basePath ?? ''}${config?.apiPath ?? '/api/logger'}`, {

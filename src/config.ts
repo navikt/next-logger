@@ -1,6 +1,9 @@
+import { LogEvent } from "pino"
+
 export interface LoggerConfiguration {
     basePath?: string
     apiPath?: string
+    onLog?: (event: LogEvent) => void
 }
 
 let config: LoggerConfiguration | null = null
