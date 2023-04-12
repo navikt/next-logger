@@ -1,4 +1,5 @@
 export * from './logger'
 export * from './loggingRoute'
+export * from './loggingRouteHandler'
 export { logger as backendLogger } from './backendLogger'
 export { configureLogger } from './config'
