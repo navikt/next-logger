@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import pino, { BaseLogger } from 'pino'
 
 import { logger } from './logger'
@@ -24,7 +23,8 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
     const { level, ts }: pino.LogEvent = body
     const label: unknown = level.label
     if (!isValidLoggingLabel(label)) {
-        return NextResponse.json({
+        // @ts-expect-error TypeScript types are lagging behind a bit
+        return Response.json({
             error: `Invalid label ${label}`,
         }, { status: 400 })
     }
@@ -40,5 +40,6 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
         })
         [label](...messages)
 
-    return NextResponse.json({ ok: `ok` })
+    // @ts-expect-error TypeScript types are lagging behind a bit
+    return Response.json({ ok: `ok` })
 }
