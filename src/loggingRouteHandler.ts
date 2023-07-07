@@ -24,9 +24,12 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
     const label: unknown = level.label
     if (!isValidLoggingLabel(label)) {
         // @ts-expect-error TypeScript types are lagging behind a bit
-        return Response.json({
-            error: `Invalid label ${label}`,
-        }, { status: 400 })
+        return Response.json(
+            {
+                error: `Invalid label ${label}`,
+            },
+            { status: 400 },
+        )
     }
 
     const messages: [objOrMsg: unknown, msgOrArgs?: string] = body.messages

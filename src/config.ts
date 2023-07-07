@@ -1,4 +1,4 @@
-import { LogEvent } from "pino"
+import { LogEvent } from 'pino'
 
 export interface LoggerConfiguration {
     basePath?: string
