@@ -25,6 +25,13 @@ updates:
           - 'react-dom'
           - '@types/react'
           - '@types/react-dom'
+      styling:
+        patterns:
+          - 'tailwindcss'
+          - 'autoprefixer'
+          - 'postcss'
+          - 'postcss-import'
+          - 'classnames'
       graphql-codegen:
         patterns:
           - '@graphql-codegen/*'
@@ -62,3 +69,10 @@ updates:
           - '@testing-library/react'
           - '@testing-library/user-event'
           - 'jsdom'
+      utils:
+        patterns:
+          - 'zod'
+          - 'date-fns'
+          - 'date-fns-tz'
+          - 'remeda'
+          - 'fuse.js'
