@@ -10,7 +10,8 @@ updates:
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: weekly
+      interval: 'weekly'
+      day: 'sunday'
     open-pull-requests-limit: 20
     registries: '*'
     groups:
@@ -56,12 +57,14 @@ updates:
           - 'eslint-config-next'
       code-style:
         patterns:
+          - 'eslint'
           - 'prettier'
           - 'prettier-plugin-tailwindcss'
       testing:
         patterns:
           - 'vitest'
           - 'vitest-dom'
+          - 'vitest-axe'
           - '@vitejs/plugin-react'
           - 'open'
           - 'next-router-mock'
@@ -75,3 +78,10 @@ updates:
           - 'date-fns-tz'
           - 'remeda'
           - 'fuse.js'
+      dev-tools:
+        patterns:
+          - 'dotenv'
+          - 'concurrently'
+          - 'husky'
+          - 'lint-staged'
+          - 'node-gyp'
