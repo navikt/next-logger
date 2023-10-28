@@ -17,7 +17,7 @@
         "@navikt/eslint-config-teamsykmelding": "^2.0.0",
         "@types/node": "^18.16.19",
         "next": "^13.4.9",
-        "pino": "^8.14.1",
+        "pino": "^8.16.1",
         "prettier": "^2.8.8",
         "typescript": "^5.1.6"
     },
