@@ -10,7 +10,7 @@
         "build": "tsc --declaration"
     },
     "peerDependencies": {
-        "next": "12 || 13",
+        "next": "12 || 13 || 14",
         "pino": "8"
     },
     "devDependencies": {
