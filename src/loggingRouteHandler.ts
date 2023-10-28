@@ -23,7 +23,6 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
     const { level, ts }: pino.LogEvent = body
     const label: unknown = level.label
     if (!isValidLoggingLabel(label)) {
-        // @ts-expect-error TypeScript types are lagging behind a bit
         return Response.json(
             {
                 error: `Invalid label ${label}`,
@@ -43,6 +42,5 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
         })
         [label](...messages)
 
-    // @ts-expect-error TypeScript types are lagging behind a bit
     return Response.json({ ok: `ok` })
 }
