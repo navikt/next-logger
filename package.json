@@ -14,7 +14,7 @@
         "pino": "8"
     },
     "devDependencies": {
-        "@navikt/eslint-config-teamsykmelding": "^4.5.0",
+        "@navikt/eslint-config-teamsykmelding": "^5.0.0",
         "@types/node": "^20.8.9",
         "next": "^14.0.0",
         "pino": "^8.16.1",
