@@ -11,6 +11,10 @@ updates:
     directory: '/'
     schedule:
       interval: 'monthly'
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
     open-pull-requests-limit: 20
     registries: '*'
     groups:
