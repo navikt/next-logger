@@ -35,9 +35,11 @@ export const pinoLoggingRoute = (req: NextApiRequest, res: NextApiResponse): voi
     }
 
     const messages: [objOrMsg: unknown, msgOrArgs?: string] = req.body.messages
+    const bindings: Record<string, string>[] = req.body.bindings ?? []
 
     logger
         .child({
+            ...bindings,
             x_timestamp: ts,
             x_isFrontend: true,
             x_userAgent: req.headers['user-agent'],

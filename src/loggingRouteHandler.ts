@@ -32,9 +32,11 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
     }
 
     const messages: [objOrMsg: unknown, msgOrArgs?: string] = body.messages
+    const bindings: Record<string, string>[] = body.bindings ?? []
 
     logger
         .child({
+            ...bindings,
             x_timestamp: ts,
             x_isFrontend: true,
             x_userAgent: request.headers.get('user-agent'),
