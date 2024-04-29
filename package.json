@@ -11,20 +11,21 @@
     },
     "peerDependencies": {
         "next": "12 || 13 || 14",
-        "pino": "8"
+        "pino": "8 || 9"
     },
     "devDependencies": {
-        "@navikt/eslint-config-teamsykmelding": "^4.5.0",
-        "@types/node": "^20.8.9",
-        "next": "^14.0.0",
-        "pino": "^8.16.1",
-        "prettier": "^3.0.3",
-        "typescript": "^5.2.2"
+        "@navikt/eslint-config-teamsykmelding": "^6.1.0",
+        "@types/node": "^20.12.7",
+        "next": "^14.2.3",
+        "pino": "^9.0.0",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.5"
     },
     "eslintConfig": {
         "extends": [
             "@navikt/eslint-config-teamsykmelding"
         ]
     },
-    "prettier": "@navikt/eslint-config-teamsykmelding/prettier"
+    "prettier": "@navikt/eslint-config-teamsykmelding/prettier",
+    "packageManager": "yarn@4.1.1"
 }
