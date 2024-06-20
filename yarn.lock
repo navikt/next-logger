@@ -23,9 +23,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/eslint-config-teamsykmelding@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@navikt/eslint-config-teamsykmelding@npm:6.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Feslint-config-teamsykmelding%2F6.1.0%2F20868e92372915947947344cfac936757bf4590d"
+"@navikt/eslint-config-teamsykmelding@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@navikt/eslint-config-teamsykmelding@npm:6.2.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Feslint-config-teamsykmelding%2F6.2.0%2Fb6632aab24f13d2f7666ac049136cb73af2876f2"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^6.21.0"
     "@typescript-eslint/parser": "npm:^6.21.0"
@@ -33,13 +33,13 @@ __metadata:
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-prettier: "npm:^5.1.3"
     eslint-plugin-react: "npm:^7.34.1"
-    eslint-plugin-react-hooks: "npm:^4.6.0"
+    eslint-plugin-react-hooks: "npm:^4.6.2"
     eslint-plugin-testing-library: "npm:^6.2.2"
   peerDependencies:
     eslint: ">=8"
     prettier: ">=2"
     typescript: ">=4"
-  checksum: 10c0/8eab47fe7875fdd4cab87ad8904bd3a0ccf50bfea6ecaf9ba09c8ae5b3ab509e6c4576a2d34e6584ae20087ef5ce05e792e37025a145fed49753ba68a7222637
+  checksum: 10c0/e6745593d220a034cde85c412e89872228dc9b12783995b6b335dd001066060935fc7591e6cc841cbdf815d2936c29a5644ba46bb800a068598d2484879e6003
   languageName: node
   linkType: hard
 
@@ -47,7 +47,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/next-logger@workspace:."
   dependencies:
-    "@navikt/eslint-config-teamsykmelding": "npm:^6.1.0"
+    "@navikt/eslint-config-teamsykmelding": "npm:^6.2.0"
     "@types/node": "npm:^20.12.7"
     next: "npm:^14.2.3"
     pino: "npm:^9.0.0"
@@ -947,7 +947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4.6.0":
+"eslint-plugin-react-hooks@npm:^4.6.2":
   version: 4.6.2
   resolution: "eslint-plugin-react-hooks@npm:4.6.2"
   peerDependencies:
