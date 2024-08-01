@@ -16,7 +16,7 @@
     "devDependencies": {
         "@navikt/eslint-config-teamsykmelding": "^6.1.0",
         "@types/node": "^20.12.7",
-        "next": "^14.2.3",
+        "next": "^14.2.5",
         "pino": "^9.0.0",
         "prettier": "^3.2.5",
         "typescript": "^5.4.5"
