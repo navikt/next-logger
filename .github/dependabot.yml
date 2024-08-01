@@ -17,6 +17,9 @@ updates:
       include: scope
     open-pull-requests-limit: 20
     registries: '*'
+    ignore:
+      - dependency-name: 'eslint'
+        versions: ['9.x']
     groups:
       aksel-dependencies:
         patterns:
@@ -68,6 +71,7 @@ updates:
           - 'vitest'
           - 'vitest-dom'
           - 'vitest-axe'
+          - '@vitest/coverage-v8'
           - '@vitejs/plugin-react'
           - 'open'
           - 'next-router-mock'
@@ -81,6 +85,7 @@ updates:
           - 'date-fns-tz'
           - 'remeda'
           - 'fuse.js'
+          - 'crypto-hash'
       dev-tools:
         patterns:
           - 'dotenv'
