@@ -14,9 +14,9 @@
         "pino": "8 || 9"
     },
     "devDependencies": {
-        "@navikt/eslint-config-teamsykmelding": "^6.5.0",
+        "@navikt/eslint-config-teamsykmelding": "^6.6.0",
         "@types/node": "^20.16.5",
-        "next": "^14.2.9",
+        "next": "^14.2.12",
         "pino": "^9.4.0",
         "prettier": "^3.3.3",
         "typescript": "^5.6.2"
@@ -27,5 +27,5 @@
         ]
     },
     "prettier": "@navikt/eslint-config-teamsykmelding/prettier",
-    "packageManager": "yarn@4.4.1"
+    "packageManager": "yarn@4.5.0"
 }
