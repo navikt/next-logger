@@ -63,6 +63,8 @@ module.exports = {
 
 ## Configuration
 
+### Pages
+
 If your application is using a base path, or you want to have your logger on a different API-route, you can configure the logger.
 
 In your `_app.tsx`, on root in the file, you can use `configureLogger` as such:
@@ -80,4 +82,22 @@ Or if you only want to change the base path:
 configureLogger({
     basePath: '/my/base/path',
 })
+```
+
+### App Dir
+
+You want this configuration to execute as early as possible, but on the actual client. Typically in your app-dir app, you will have for example a `<Providers>`-client that is `"use client"`-enabled.
+
+On the _root_ of any `"use client"`-enabled file that wraps your root layout.tsx, you can configure the library, for example:
+
+```ts
+"use client"
+
+configureLogger({
+    basePath: '/my/base/path',
+})
+
+export const MyProviders() {
+   ...
+}
 ```
