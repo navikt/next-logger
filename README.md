@@ -14,7 +14,18 @@ yarn add @navikt/next-logger pino
 npm i @navikt/next-logger pino
 ```
 
+if you want to use the secure logger, you also need to install `pino-roll`:
+
+```bash
+yarn add pino-roll
+```
+
+```bash
+npm i pino-roll
+```
+
 ### Step 1: API route
+
 You need an API route that will receive all the log statements.
 
 Create a new API route `/pages/api/logger.ts`, it should look like this:
@@ -26,6 +37,7 @@ export { pinoLoggingRoute as default } from '@navikt/next-logger';
 ### Step 2: Logging
 
 Anywhere in your application where you want to log, you should import `import { logger } from '@navikt/next-logger';`, this is a [pino](https://github.com/pinojs/pino/blob/master/docs/api.md#logger) instance, use it to log, for example: `logger.warn("Uh oh")`.
+Alternatively, if you need secure logging, use `ìmport { secureLogger } from '@navikt/next-logger';`. See [Securelogs](#Securelogs) for more information on secure logging.
 
 ### Step 3: pino-pretty
 
@@ -54,11 +66,11 @@ The pino configuration from this library can be shared with [next-logger](https:
 Simply create a `next-logger.config.js` in the root of your project, and re-export the logging config as following:
 
 ```js
-const { backendLogger } = require('@navikt/next-logger');
+const { backendLogger } = require('@navikt/next-logger')
 
 module.exports = {
     logger: backendLogger,
-};
+}
 ```
 
 ## Configuration
@@ -101,3 +113,10 @@ export const MyProviders() {
    ...
 }
 ```
+
+## Securelogs
+
+If you want to log sensitive information, you can use the `securelogger` function. This will instead of logging to stdout log to a file on /secure-logs. 
+This requires some setup, see [nais doc](https://doc.nais.io/observability/logging/how-to/enable-secure-logs/) for how to enable secure logging in your app.
+
+The log file is setup with [pino-roll](https://www.npmjs.com/package/pino-roll) for rolling the logs based on file size.
