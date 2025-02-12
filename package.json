@@ -1,18 +1,52 @@
 {
     "name": "@navikt/next-logger",
-    "version": "1.36.0",
+    "version": "2.0.0",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist"
     ],
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./app-dir": {
+            "import": "./dist/routes/app-dir/index.js",
+            "require": "./dist/routes/app-dir/index.js",
+            "types": "./dist/routes/app-dir/index.d.ts"
+        },
+        "./pages": {
+            "import": "./dist/routes/pages/index.js",
+            "require": "./dist/routes/pages/index.js",
+            "types": "./dist/routes/pages/index.d.ts"
+        },
+        "./secure-log": {
+            "import": "./dist/secure-log/index.js",
+            "require": "./dist/secure-log/index.js",
+            "types": "./dist/secure-log/index.d.ts"
+        },
+        "./secure-log/app-dir": {
+            "import": "./dist/secure-log/routes/app-dir/index.js",
+            "require": "./dist/secure-log/routes/app-dir/index.js",
+            "types": "./dist/secure-log/routes/app-dir/index.d.ts"
+        },
+        "./secure-log/pages": {
+            "import": "./dist/secure-log/routes/pages/index.js",
+            "require": "./dist/secure-log/routes/pages/index.js",
+            "types": "./dist/secure-log/routes/pages/index.d.ts"
+        }
+    },
     "scripts": {
         "build": "tsc --declaration"
     },
     "peerDependencies": {
         "next": "14 || 15",
-        "pino": "8 || 9",
-        "pino-roll": "*"
+        "pino": "8 || 9"
+    },
+    "optionalDependencies": {
+        "pino-roll": "3"
     },
     "devDependencies": {
         "@navikt/eslint-config-teamsykmelding": "^7.0.0",

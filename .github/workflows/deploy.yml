@@ -2,7 +2,7 @@ name: Build and publish library
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', "feat/v2"]
 env:
   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
@@ -31,9 +31,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn --immutable
+      - name: Set next version
+        run: |
+          TEMP_VERSION=$(date +'%Y%m%d%H%M%S')
+          jq --arg v "2.0.0-$TEMP_VERSION" '.version = $v' package.json > package.tmp.json && mv package.tmp.json package.json
       - run: yarn build
-      - run: npm publish
-        if: github.ref == 'refs/heads/main'
+      - run: npm publish --tag next
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref_name, 'feat/v2')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   increment-version:

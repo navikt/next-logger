@@ -1,13 +1,9 @@
-import pino from 'pino'
+import pino, { DestinationStream, LoggerOptions } from 'pino'
 
-interface LoggerConfiguration {
-    secure?: boolean
-}
-
-export const logger = (loggerConfig: LoggerConfiguration = {}): pino.Logger =>
+export const backendLogger = (defaultConfig: LoggerOptions = {}, destination?: DestinationStream): pino.Logger =>
     pino(
         {
-            ...loggerConfig,
+            ...defaultConfig,
             timestamp: false,
             formatters: {
                 level: (label) => {
@@ -27,7 +23,5 @@ export const logger = (loggerConfig: LoggerConfiguration = {}): pino.Logger =>
                 },
             },
         },
-        loggerConfig.secure
-            ? pino.transport({ target: 'pino-roll', options: { file: '/secure-logs/secure.log', size: '128m' } })
-            : undefined,
+        destination,
     )

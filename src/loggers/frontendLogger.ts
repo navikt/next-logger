@@ -1,7 +1,7 @@
 import pino from 'pino'
-import { getConfig } from './config'
+import { getConfig } from '../config'
 
-export const logger = (secure?: boolean): pino.Logger =>
+export const frontendLogger = (secure?: boolean): pino.Logger =>
     pino({
         browser: {
             transmit: {
@@ -10,11 +10,10 @@ export const logger = (secure?: boolean): pino.Logger =>
                     config?.onLog?.(logEvent)
 
                     try {
-                        await fetch(`${config?.basePath ?? ''}${config?.apiPath ?? `/api/logger`}`, {
+                        await fetch(getPath(secure ?? false), {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json',
-                                ...(secure ? { 'secure-log': 'true' } : {}),
                             },
                             body: JSON.stringify(
                                 // Hackily massage messages from exceptions into being { err: {...} } to normalize how logging looks
@@ -29,6 +28,15 @@ export const logger = (secure?: boolean): pino.Logger =>
             },
         },
     })
+
+function getPath(secure: boolean): string {
+    const config = getConfig()
+    if (!secure) {
+        return `${config?.basePath ?? ''}${config?.apiPath ?? `/api/logger`}`
+    } else {
+        return `${config?.secureLogApiPath ?? ''}${config?.apiPath ?? `/api/secure-logger`}`
+    }
+}
 
 function errorifyMessages(logEvent: pino.LogEvent): pino.LogEvent {
     logEvent.messages = logEvent.messages.map((message) => {

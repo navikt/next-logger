@@ -3,6 +3,7 @@ import { LogEvent } from 'pino'
 export interface LoggerConfiguration {
     basePath?: string
     apiPath?: string
+    secureLogApiPath?: string
     onLog?: (event: LogEvent) => void
 }
 
