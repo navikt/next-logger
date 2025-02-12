@@ -1,6 +1,6 @@
 import pino, { BaseLogger } from 'pino'
 
-import { logger } from './logger'
+import { logger, secureLogger } from './logger'
 
 type LogLevels = Exclude<keyof BaseLogger, 'string' | 'level'>
 
@@ -34,7 +34,9 @@ export const POSTLoggingRouteHandler = async (request: Request): Promise<Respons
     const messages: [objOrMsg: unknown, msgOrArgs?: string] = body.messages
     const bindings: Record<string, string> = body?.bindings?.[0] ?? {}
 
-    logger
+    const _logger = request.headers.get('secure-log') === 'true' ? secureLogger : logger
+
+    _logger
         .child({
             ...bindings,
             x_timestamp: ts,
