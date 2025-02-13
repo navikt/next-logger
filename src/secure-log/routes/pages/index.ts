@@ -1,4 +1,4 @@
 import { createLoggingApiRoute } from '../../../routes/pages/loggingApiRoute'
-import { secureBackendLogger } from '../../secureBackendLogger'
+import { secureLogger } from '../../logger'
 
-export const pinoLoggingRoute = createLoggingApiRoute(secureBackendLogger())
+export const pinoLoggingRoute = createLoggingApiRoute(secureLogger)

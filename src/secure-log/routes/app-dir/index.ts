@@ -1,4 +1,4 @@
 import { createLoggingRouteHandler } from '../../../routes/app-dir/loggingRouteHandler'
-import { secureBackendLogger } from '../../secureBackendLogger'
+import { secureLogger } from '../../logger'
 
-export const POST = createLoggingRouteHandler(secureBackendLogger())
+export const POST = createLoggingRouteHandler(secureLogger)
