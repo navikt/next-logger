@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import pino, { BaseLogger } from 'pino'
+import { Metadata, prefixKeys } from '../metadata'
 
 type LogLevels = Exclude<keyof BaseLogger, 'string' | 'level'>
 
@@ -19,6 +20,7 @@ function isValidLoggingLabel(label: unknown): label is LogLevels {
 
 export const createLoggingApiRoute =
     (logger: pino.Logger) =>
+    (metadata?: Metadata) =>
     (req: NextApiRequest, res: NextApiResponse): void => {
         if (req.method !== 'POST') {
             res.status(405).json({ error: 'Method Not Allowed' })
@@ -44,6 +46,7 @@ export const createLoggingApiRoute =
                 x_isFrontend: true,
                 x_userAgent: req.headers['user-agent'],
                 x_request_id: req.headers['x-request-id'] ?? 'not-set',
+                ...prefixKeys(metadata),
             })
             [label](...messages)
 
