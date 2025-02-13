@@ -2,4 +2,4 @@ import { backendLogger } from '../../loggers/backendLogger'
 
 import { createLoggingRouteHandler } from './loggingRouteHandler'
 
-export const POST = createLoggingRouteHandler(backendLogger())
+export const POST: (request: Request) => Promise<Response> = createLoggingRouteHandler(backendLogger())()

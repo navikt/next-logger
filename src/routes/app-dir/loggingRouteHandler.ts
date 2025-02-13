@@ -1,5 +1,7 @@
 import pino, { BaseLogger } from 'pino'
 
+import { Metadata, prefixKeys } from '../metadata'
+
 type LogLevels = Exclude<keyof BaseLogger, 'string' | 'level'>
 
 const validLogLevels: Record<LogLevels, LogLevels> = {
@@ -18,6 +20,7 @@ function isValidLoggingLabel(label: unknown): label is LogLevels {
 
 export const createLoggingRouteHandler =
     (logger: pino.Logger) =>
+    (metadata?: Metadata) =>
     async (request: Request): Promise<Response> => {
         const body = await request.json()
         const { level, ts }: pino.LogEvent = body
@@ -41,6 +44,7 @@ export const createLoggingRouteHandler =
                 x_isFrontend: true,
                 x_userAgent: request.headers.get('user-agent'),
                 x_request_id: request.headers.get('x-request-id') ?? 'not-set',
+                ...prefixKeys(metadata),
             })
             [label](...messages)
 
