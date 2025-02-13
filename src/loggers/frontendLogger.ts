@@ -7,7 +7,10 @@ export const frontendLogger = (secure?: boolean): pino.Logger =>
             transmit: {
                 send: async (_, logEvent) => {
                     const config = getConfig()
-                    config?.onLog?.(logEvent)
+
+                    if (!secure) {
+                        config?.onLog?.(logEvent)
+                    }
 
                     try {
                         await fetch(getPath(secure ?? false), {
