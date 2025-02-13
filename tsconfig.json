@@ -7,5 +7,7 @@
         "strict": true,
         "skipLibCheck": true,
         "outDir": "dist"
-    }
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["**/*.test.ts"]
 }
