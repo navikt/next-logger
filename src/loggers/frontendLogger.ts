@@ -34,7 +34,7 @@ function getPath(secure: boolean): string {
     if (!secure) {
         return `${config?.basePath ?? ''}${config?.apiPath ?? `/api/logger`}`
     } else {
-        return `${config?.secureLogApiPath ?? ''}${config?.apiPath ?? `/api/secure-logger`}`
+        return `${config?.basePath ?? ''}${config?.apiPath ?? `/api/secure-logger`}`
     }
 }
 
