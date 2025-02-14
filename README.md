@@ -1,6 +1,8 @@
 # next-logger
 
-A simple logger that lets you log from both the frontend and the backend. Both will log in a JSON format that [logs.adeo.no](https://logs.adeo.no) understands. And all logs are grouped under your application (`+application:yourapp`) with correct log level.
+An isomorphic logger that lets you log from both the frontend and the backend. Both will log in a JSON format that [logs.adeo.no](https://logs.adeo.no) understands. And all logs are grouped under your application (`+application:yourapp`) with correct log level.
+
+Now with [SecureLogs](https://doc.nais.io/observability/logging/how-to/enable-secure-logs/) support!
 
 ## Getting started
 
@@ -24,9 +26,9 @@ yarn add pino-roll
 npm i pino-roll
 ```
 
-### Step 1: API route
+### Step 1: Prepare Next.js for isomorphic logging
 
-You need an API route that will receive all the log statements.
+You need an API route that will receive all the log statements from the frontend.
 
 **For app dir:**
 
@@ -41,7 +43,7 @@ export { POST } from '@navikt/next-logger/app-dir'
 Create a new API route `/pages/api/logger.ts`, it should look like this:
 
 ```ts
-export { pinoLoggingRoute as default } from '@navikt/next-logger/pages';
+export { loggingRoute as default } from '@navikt/next-logger/pages';
 ```
 
 ### Step 2: Logging
@@ -149,6 +151,46 @@ Create a new API route `/pages/api/secure-logger.ts`, it should look like this:
 export { pinoLoggingRoute as default } from '@navikt/next-logger/secure-log/pages';
 ```
 
+If you need to add some extra metadata to secure log statements server side, you can add an metadata-middleware to extract info from the request:
+
+**App dir**
+```ts
+import { withMetadata } from '@navikt/next-logger/secure-log/app-dir'
+import { UAParser } from 'ua-parser-js'
+
+export const POST = withMetadata((request) => {
+    const userAgent = request.headers.get('user-agent')
+    if (!userAgent) return { platform: 'unknown' }
+
+    const ua = UAParser(userAgent)
+
+    return {
+        platform: ua.device.type ?? 'unknown',
+    }
+})
+```
+
+**Pages**
+```ts
+import { withMetadata } from "@navikt/next-logger/secure-log/pages";
+import { UAParser } from 'ua-parser-js'
+
+export default withMetadata((req) => {
+    const userAgent = request.headers.get('user-agent')
+    if (!userAgent) return { platform: 'unknown' }
+
+    const ua = UAParser(userAgent)
+
+    return {
+        platform: ua.device.type ?? 'unknown',
+    }
+});
+```
+
+Remember not to parse the body using `.json()` or `.text`!
+
+This feature is available only for secure-log.
+
 ## Breaking changes: migrating to v2
 
 The only breaking change is that the paths for the API routes have been updated.
@@ -167,7 +209,7 @@ The only breaking change is that the paths for the API routes have been updated.
 
 ```diff
 - export { pinoLoggingRoute as default } from '@navikt/next-logger'
-+ export { pinoLoggingRoute as default } from '@navikt/next-logger/pages'
++ export { loggingRoute as default } from '@navikt/next-logger/pages'
 ```
 
 If you want to use the new secureLogger feature, refer to the Securelogs docs above.
