@@ -50,13 +50,13 @@
         "pino-roll": "3"
     },
     "devDependencies": {
-        "@navikt/eslint-config-teamsykmelding": "^7.0.0",
-        "@types/node": "^20.16.5",
-        "next": "15.0.1",
-        "pino": "^9.4.0",
-        "prettier": "^3.3.3",
-        "typescript": "^5.6.2",
-        "vitest": "^3.0.5"
+        "@navikt/eslint-config-teamsykmelding": "^7.1.0",
+        "@types/node": "^22.13.13",
+        "next": "15.2.4",
+        "pino": "^9.6.0",
+        "prettier": "^3.5.3",
+        "typescript": "^5.8.2",
+        "vitest": "^3.0.9"
     },
     "eslintConfig": {
         "extends": [
@@ -64,5 +64,5 @@
         ]
     },
     "prettier": "@navikt/eslint-config-teamsykmelding/prettier",
-    "packageManager": "yarn@4.5.0"
+    "packageManager": "yarn@4.7.0"
 }
