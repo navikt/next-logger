@@ -3201,12 +3201,12 @@ __metadata:
   linkType: soft
 
 "pino-roll@npm:3":
-  version: 3.0.0
-  resolution: "pino-roll@npm:3.0.0"
+  version: 3.1.0
+  resolution: "pino-roll@npm:3.1.0"
   dependencies:
     date-fns: "npm:^4.1.0"
     sonic-boom: "npm:^4.0.1"
-  checksum: 10c0/5b4485d0d670ce451f1fbb0d2fbebee8816a04c5810f572815d886bfd095114309970975d67ae19ad3870757a19e7ce274ff645ae653f39d1d0f83b4cf556163
+  checksum: 10c0/0ae1b475889748d8f87f9a4bd622b841500b76ae279a2409e1453e74bed23d227b1a7a21069c8226e65311e37cc34217592199a09d4b01db5e5c236678b67040
   languageName: node
   linkType: hard
 
