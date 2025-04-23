@@ -1,0 +1,36 @@
+{
+    "name": "@navikt/pino-logger",
+    "version": "2.3.0",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "files": [
+        "dist"
+    ],
+    ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+    },
+    "./secure-log": {
+        "import": "./dist/secure-log/index.js",
+        "require": "./dist/secure-log/index.js",
+        "types": "./dist/secure-log/index.d.ts"
+    },
+    "scripts": {
+        "build": "tsc --declaration"
+    },
+    "peerDependencies": {
+        "pino": "8 || 9"
+    },
+    "optionalDependencies": {
+        "pino-roll": "3"
+    },
+    "devDependencies": {
+        "@types/node": "^22.14.1",
+        "pino": "^9.6.0",
+        "typescript": "^5.8.3"
+    }
+}

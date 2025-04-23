@@ -458,6 +458,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@navikt/pino-logger@workspace:libs/pino-logger":
+  version: 0.0.0-use.local
+  resolution: "@navikt/pino-logger@workspace:libs/pino-logger"
+  dependencies:
+    "@types/node": "npm:^22.14.1"
+    pino: "npm:^9.6.0"
+    pino-roll: "npm:3"
+    typescript: "npm:^5.8.3"
+  peerDependencies:
+    pino: 8 || 9
+  dependenciesMeta:
+    pino-roll:
+      optional: true
+  languageName: unknown
+  linkType: soft
+
 "@next/env@npm:15.3.1":
   version: 15.3.1
   resolution: "@next/env@npm:15.3.1"
