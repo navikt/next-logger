@@ -1,12 +1,12 @@
 {
     "name": "@navikt/next-logger",
-    "version": "2.6.1",
+    "version": "3.0.1",
     "license": "MIT",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "type": "module",
     "publishConfig": {
         "access": "public",
-        "registry": "https://npm.pkg.github.com/"
+        "registry": "https://npm.pkg.github.com/",
+        "tag": "beta"
     },
     "files": [
         "dist"

@@ -1,3 +1,3 @@
 export * from './logger'
 
-export { secureBackendLogger } from './secureBackendLogger'
+export { createSecureLogger as secureBackendLogger } from '@navikt/pino-logger/secure-log'

@@ -1,6 +1,6 @@
 import pino from 'pino'
+import { createLogger as backendLogger } from '@navikt/pino-logger'
 
-import { backendLogger as backendLogger } from './loggers/backendLogger'
 import { frontendLogger as frontendLogger } from './loggers/frontendLogger'
 
 export const logger = typeof window !== 'undefined' ? frontendLogger() : backendLogger()

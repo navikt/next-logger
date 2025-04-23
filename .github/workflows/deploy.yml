@@ -56,4 +56,4 @@ jobs:
         working-directory: libs/next-logger
       - run: yarn version -i patch
         working-directory: libs/pino-logger
-      - run: git add . && git commit -m "[skip ci] bump version to $(jq -r .version package.json)" && git push
+      - run: git add . && git commit -m "[skip ci] bump version to $(jq -r .version libs/pino-logger/package.json)" && git push

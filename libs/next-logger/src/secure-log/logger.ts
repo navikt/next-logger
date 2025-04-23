@@ -1,4 +1,4 @@
-import { secureBackendLogger } from './secureBackendLogger'
+import { createSecureLogger } from '@navikt/pino-logger/secure-log'
 import { frontendLogger as frontendLogger } from '../loggers/frontendLogger'
 
-export const secureLogger = typeof window !== 'undefined' ? frontendLogger(true) : secureBackendLogger()
+export const secureLogger = typeof window !== 'undefined' ? frontendLogger(true) : createSecureLogger()

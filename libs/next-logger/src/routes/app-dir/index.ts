@@ -1,5 +1,5 @@
-import { backendLogger } from '../../loggers/backendLogger'
+import { createLogger } from '@navikt/pino-logger'
 
 import { createLoggingRouteHandler } from './loggingRouteHandler'
 
-export const POST: (request: Request) => Promise<Response> = createLoggingRouteHandler(backendLogger())()
+export const POST: (request: Request) => Promise<Response> = createLoggingRouteHandler(createLogger())()

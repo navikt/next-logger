@@ -1,4 +1,5 @@
+export { createLogger as backendLogger } from '@navikt/pino-logger'
+
 export * from './logger'
 
-export { backendLogger } from './loggers/backendLogger'
 export { configureLogger } from './config'
