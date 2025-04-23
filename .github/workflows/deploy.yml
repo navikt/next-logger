@@ -27,10 +27,10 @@ jobs:
       - run: yarn test
       - run: yarn build
 
-      #      - name: Publish pino-logger
-      #        if: github.ref == 'refs/heads/main'
-      #        run: yarn npm publish
-      #        working-directory: libs/pino-logger
+      - name: Publish pino-logger
+        if: github.ref == 'refs/heads/main'
+        run: yarn npm publish
+        working-directory: libs/pino-logger
 
       - name: Publish next-logger
         if: github.ref == 'refs/heads/main'
@@ -56,4 +56,6 @@ jobs:
       - run: yarn version -i minor
       - run: yarn version -i minor
         working-directory: libs/next-logger
+      - run: yarn version -i minor
+        working-directory: libs/pino-logger
       - run: git add . && git commit -m "[skip ci] bump version to $(jq -r .version package.json)" && git push
