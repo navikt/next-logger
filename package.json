@@ -1,7 +1,6 @@
 {
     "name": "pino-logger-root",
     "private": true,
-    "version": "2.6.0",
     "license": "MIT",
     "packageManager": "yarn@4.9.1",
     "workspaces": [

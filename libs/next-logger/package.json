@@ -47,6 +47,9 @@
         "build": "tsc --declaration",
         "test": "vitest"
     },
+    "dependencies": {
+        "@navikt/pino-logger": "workspace:^"
+    },
     "peerDependencies": {
         "next": "14 || 15",
         "pino": "8 || 9"

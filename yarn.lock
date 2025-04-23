@@ -443,6 +443,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/next-logger@workspace:libs/next-logger"
   dependencies:
+    "@navikt/pino-logger": "workspace:^"
     "@types/node": "npm:^22.14.1"
     next: "npm:15.3.1"
     pino: "npm:^9.6.0"
@@ -458,7 +459,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/pino-logger@workspace:libs/pino-logger":
+"@navikt/pino-logger@workspace:^, @navikt/pino-logger@workspace:libs/pino-logger":
   version: 0.0.0-use.local
   resolution: "@navikt/pino-logger@workspace:libs/pino-logger"
   dependencies:
