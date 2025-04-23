@@ -9,15 +9,17 @@
     "files": [
         "dist"
     ],
-    ".": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-    },
-    "./secure-log": {
-        "import": "./dist/secure-log/index.js",
-        "require": "./dist/secure-log/index.js",
-        "types": "./dist/secure-log/index.d.ts"
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./secure-log": {
+            "import": "./dist/secure-log/index.js",
+            "require": "./dist/secure-log/index.js",
+            "types": "./dist/secure-log/index.d.ts"
+        }
     },
     "scripts": {
         "build": "tsc --declaration"
