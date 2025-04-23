@@ -55,10 +55,10 @@
         "pino-roll": "3"
     },
     "devDependencies": {
-        "@types/node": "^22.13.13",
-        "next": "15.2.4",
+        "@types/node": "^22.14.1",
+        "next": "15.3.1",
         "pino": "^9.6.0",
-        "typescript": "^5.8.2",
-        "vitest": "^3.0.9"
+        "typescript": "^5.8.3",
+        "vitest": "^3.1.2"
     }
 }
