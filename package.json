@@ -1,68 +1,25 @@
 {
-    "name": "@navikt/next-logger",
+    "name": "pino-logger-root",
+    "private": true,
     "version": "2.2.0",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "files": [
-        "dist"
+    "license": "MIT",
+    "packageManager": "yarn@4.9.1",
+    "workspaces": [
+        "libs/pino-logger",
+        "libs/next-logger"
     ],
-    "exports": {
-        ".": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
-        },
-        "./app-dir": {
-            "import": "./dist/routes/app-dir/index.js",
-            "require": "./dist/routes/app-dir/index.js",
-            "types": "./dist/routes/app-dir/index.d.ts"
-        },
-        "./pages": {
-            "import": "./dist/routes/pages/index.js",
-            "require": "./dist/routes/pages/index.js",
-            "types": "./dist/routes/pages/index.d.ts"
-        },
-        "./secure-log": {
-            "import": "./dist/secure-log/index.js",
-            "require": "./dist/secure-log/index.js",
-            "types": "./dist/secure-log/index.d.ts"
-        },
-        "./secure-log/app-dir": {
-            "import": "./dist/secure-log/routes/app-dir/index.js",
-            "require": "./dist/secure-log/routes/app-dir/index.js",
-            "types": "./dist/secure-log/routes/app-dir/index.d.ts"
-        },
-        "./secure-log/pages": {
-            "import": "./dist/secure-log/routes/pages/index.js",
-            "require": "./dist/secure-log/routes/pages/index.js",
-            "types": "./dist/secure-log/routes/pages/index.d.ts"
-        }
-    },
     "scripts": {
-        "build": "tsc --declaration",
-        "test": "vitest"
-    },
-    "peerDependencies": {
-        "next": "14 || 15",
-        "pino": "8 || 9"
-    },
-    "optionalDependencies": {
-        "pino-roll": "3"
+        "build": "yarn workspaces foreach -A run build",
+        "test": "yarn workspaces foreach -A run test"
     },
     "devDependencies": {
         "@navikt/eslint-config-teamsykmelding": "^7.1.0",
-        "@types/node": "^22.13.13",
-        "next": "15.2.4",
-        "pino": "^9.6.0",
-        "prettier": "^3.5.3",
-        "typescript": "^5.8.2",
-        "vitest": "^3.0.9"
+        "prettier": "^3.5.3"
     },
     "eslintConfig": {
         "extends": [
             "@navikt/eslint-config-teamsykmelding"
         ]
     },
-    "prettier": "@navikt/eslint-config-teamsykmelding/prettier",
-    "packageManager": "yarn@4.7.0"
+    "prettier": "@navikt/eslint-config-teamsykmelding/prettier"
 }
