@@ -432,16 +432,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/next-logger@workspace:.":
+"@navikt/next-logger@workspace:libs/next-logger":
   version: 0.0.0-use.local
-  resolution: "@navikt/next-logger@workspace:."
+  resolution: "@navikt/next-logger@workspace:libs/next-logger"
   dependencies:
-    "@navikt/eslint-config-teamsykmelding": "npm:^7.1.0"
     "@types/node": "npm:^22.13.13"
     next: "npm:15.2.4"
     pino: "npm:^9.6.0"
     pino-roll: "npm:3"
-    prettier: "npm:^3.5.3"
     typescript: "npm:^5.8.2"
     vitest: "npm:^3.0.9"
   peerDependencies:
@@ -3192,6 +3190,15 @@ __metadata:
   checksum: 10c0/02c05b8f2ffce0d7c774c8e588f61e8b77de8ccb5f8125afd4a7325c9ea0e6af7fb78168999657712ae843e4462bb70ac550dfd6284f930ee57f17f486f25a9f
   languageName: node
   linkType: hard
+
+"pino-logger-root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "pino-logger-root@workspace:."
+  dependencies:
+    "@navikt/eslint-config-teamsykmelding": "npm:^7.1.0"
+    prettier: "npm:^3.5.3"
+  languageName: unknown
+  linkType: soft
 
 "pino-roll@npm:3":
   version: 3.0.0

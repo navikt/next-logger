@@ -16,6 +16,8 @@ jobs:
   build:
     if: "!contains(github.event.head_commit.message, '[docs]')"
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,16 +35,24 @@ jobs:
       - run: yarn --immutable
       - run: yarn test
       - run: yarn build
-      - run: npm publish
+
+      #      - name: Publish pino-logger
+      #        if: github.ref == 'refs/heads/main'
+      #        run: yarn npm publish
+      #        working-directory: libs/pino-logger
+
+      - name: Publish next-logger
         if: github.ref == 'refs/heads/main'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn npm publish
+        working-directory: libs/next-logger
+
   increment-version:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: [build]
     steps:
       - uses: actions/checkout@v4
+      - run: corepack enable
       - uses: actions/setup-node@v4
       - uses: actions/cache@v4
         id: yarn-cache

@@ -1,0 +1,60 @@
+{
+    "name": "@navikt/next-logger",
+    "version": "2.2.0",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./app-dir": {
+            "import": "./dist/routes/app-dir/index.js",
+            "require": "./dist/routes/app-dir/index.js",
+            "types": "./dist/routes/app-dir/index.d.ts"
+        },
+        "./pages": {
+            "import": "./dist/routes/pages/index.js",
+            "require": "./dist/routes/pages/index.js",
+            "types": "./dist/routes/pages/index.d.ts"
+        },
+        "./secure-log": {
+            "import": "./dist/secure-log/index.js",
+            "require": "./dist/secure-log/index.js",
+            "types": "./dist/secure-log/index.d.ts"
+        },
+        "./secure-log/app-dir": {
+            "import": "./dist/secure-log/routes/app-dir/index.js",
+            "require": "./dist/secure-log/routes/app-dir/index.js",
+            "types": "./dist/secure-log/routes/app-dir/index.d.ts"
+        },
+        "./secure-log/pages": {
+            "import": "./dist/secure-log/routes/pages/index.js",
+            "require": "./dist/secure-log/routes/pages/index.js",
+            "types": "./dist/secure-log/routes/pages/index.d.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsc --declaration",
+        "test": "vitest"
+    },
+    "peerDependencies": {
+        "next": "14 || 15",
+        "pino": "8 || 9"
+    },
+    "optionalDependencies": {
+        "pino-roll": "3"
+    },
+    "devDependencies": {
+        "@types/node": "^22.13.13",
+        "next": "15.2.4",
+        "pino": "^9.6.0",
+        "typescript": "^5.8.2",
+        "vitest": "^3.0.9"
+    }
+}
