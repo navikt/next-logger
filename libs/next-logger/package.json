@@ -1,6 +1,6 @@
 {
     "name": "@navikt/next-logger",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "license": "MIT",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
