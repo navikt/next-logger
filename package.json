@@ -8,6 +8,9 @@
         "libs/pino-logger",
         "libs/next-logger"
     ],
+    "engines": {
+        "node": "22"
+    },
     "scripts": {
         "build": "yarn workspaces foreach -A run build",
         "test": "yarn workspaces foreach -A run test"
