@@ -6,10 +6,10 @@ export default defineConfig({
     ...sharedConfig,
     entry: [
         'src/index.ts',
-        'src/app-dir/index.ts',
-        'src/pages/index.ts',
+        'src/routes/app-dir/index.ts',
+        'src/routes/pages/index.ts',
         'src/secure-log/index.ts',
-        'src/secure-log/app-dir/index.ts',
-        'src/secure-log/pages/index.ts',
+        'src/secure-log/routes/app-dir/index.ts',
+        'src/secure-log/routes/pages/index.ts',
     ],
 })
