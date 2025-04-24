@@ -45,6 +45,7 @@
     },
     "scripts": {
         "build": "tsup",
+        "clean": "rimraf dist",
         "test": "vitest"
     },
     "dependencies": {

@@ -1,6 +1,9 @@
 import { defineConfig } from 'tsup'
 
+import { sharedConfig } from '../tsup.common'
+
 export default defineConfig({
+    ...sharedConfig,
     entry: [
         'src/index.ts',
         'src/app-dir/index.ts',
@@ -9,8 +12,4 @@ export default defineConfig({
         'src/secure-log/app-dir/index.ts',
         'src/secure-log/pages/index.ts',
     ],
-    dts: true,
-    splitting: false,
-    sourcemap: true,
-    clean: true,
 })
