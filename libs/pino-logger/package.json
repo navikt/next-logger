@@ -8,22 +8,23 @@
         "registry": "https://npm.pkg.github.com/"
     },
     "files": [
-        "dist"
+        "dist",
+        "package.json"
     ],
     "exports": {
         ".": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "types": "./dist/index.d.cts",
+            "import": "./dist/index.cjs",
+            "require": "./dist/index.cjs"
         },
         "./secure-log": {
-            "import": "./dist/secure-log/index.js",
-            "require": "./dist/secure-log/index.js",
-            "types": "./dist/secure-log/index.d.ts"
+            "types": "./dist/secure-log/index.d.cts",
+            "import": "./dist/secure-log/index.cjs",
+            "require": "./dist/secure-log/index.cjs"
         }
     },
     "scripts": {
-        "build": "tsc --declaration"
+        "build": "tsup"
     },
     "peerDependencies": {
         "pino": "8 || 9"

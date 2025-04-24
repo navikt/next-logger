@@ -5,46 +5,46 @@
     "type": "module",
     "publishConfig": {
         "access": "public",
-        "registry": "https://npm.pkg.github.com/",
-        "tag": "beta"
+        "registry": "https://npm.pkg.github.com/"
     },
     "files": [
-        "dist"
+        "dist",
+        "package.json"
     ],
     "exports": {
         ".": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "types": "./dist/index.d.cts",
+            "import": "./dist/index.cjs",
+            "require": "./dist/index.cjs"
         },
         "./app-dir": {
-            "import": "./dist/routes/app-dir/index.js",
-            "require": "./dist/routes/app-dir/index.js",
-            "types": "./dist/routes/app-dir/index.d.ts"
+            "types": "./dist/routes/app-dir/index.d.cts",
+            "import": "./dist/routes/app-dir/index.cjs",
+            "require": "./dist/routes/app-dir/index.cjs"
         },
         "./pages": {
-            "import": "./dist/routes/pages/index.js",
-            "require": "./dist/routes/pages/index.js",
-            "types": "./dist/routes/pages/index.d.ts"
+            "types": "./dist/routes/pages/index.d.cts",
+            "import": "./dist/routes/pages/index.cjs",
+            "require": "./dist/routes/pages/index.cjs"
         },
         "./secure-log": {
-            "import": "./dist/secure-log/index.js",
-            "require": "./dist/secure-log/index.js",
-            "types": "./dist/secure-log/index.d.ts"
+            "types": "./dist/secure-log/index.d.cts",
+            "import": "./dist/secure-log/index.cjs",
+            "require": "./dist/secure-log/index.cjs"
         },
         "./secure-log/app-dir": {
-            "import": "./dist/secure-log/routes/app-dir/index.js",
-            "require": "./dist/secure-log/routes/app-dir/index.js",
-            "types": "./dist/secure-log/routes/app-dir/index.d.ts"
+            "types": "./dist/secure-log/routes/app-dir/index.d.cts",
+            "import": "./dist/secure-log/routes/app-dir/index.cjs",
+            "require": "./dist/secure-log/routes/app-dir/index.cjs"
         },
         "./secure-log/pages": {
+            "types": "./dist/secure-log/routes/pages/index.d.cts",
             "import": "./dist/secure-log/routes/pages/index.js",
-            "require": "./dist/secure-log/routes/pages/index.js",
-            "types": "./dist/secure-log/routes/pages/index.d.ts"
+            "require": "./dist/secure-log/routes/pages/index.js"
         }
     },
     "scripts": {
-        "build": "tsc --declaration",
+        "build": "tsup",
         "test": "vitest"
     },
     "dependencies": {
@@ -61,6 +61,7 @@
         "@types/node": "^22.14.1",
         "next": "15.3.1",
         "pino": "^9.6.0",
+        "tsup": "^8.4.0",
         "typescript": "^5.8.3",
         "vitest": "^3.1.2"
     }
