@@ -7,6 +7,8 @@ This repo has two libraries, @navikt/pino-logger for logging in a node/bun/deno 
 
 [Go to migrations from v1 to v2/3](#breaking-changes-migrating-from-v1-to-v2v3)
 
+[Go to migrations from v3 to v4](#breaking-changes-migrating-from-v3-to-v4)
+
 # @navikt/pino-logger
 
 An simple logger that lets you log in your server runtime. Logs in a JSON format that [logs.adeo.no](https://logs.adeo.no) understands. And all logs are grouped under your application (`+application:yourapp`) with correct log level.
