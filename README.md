@@ -278,3 +278,9 @@ v2→v3 has no breaking changes, but changed how the library was built.
 ```
 
 If you want to use the new secureLogger feature, refer to the Securelogs docs above.
+
+## Breaking changes: migrating from v3 to v4
+
+The only change is that the default message key is `message` instead of `msg`. This doesn't affect you
+if you only view logs in Elastic, but if you have used some manual filters in Grafan (`{{ .msg }}`), you will need to change it to `{{ .message }}`.
+

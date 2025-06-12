@@ -1,6 +1,6 @@
 {
     "name": "@navikt/next-logger",
-    "version": "3.0.4",
+    "version": "4.0.0",
     "license": "MIT",
     "type": "module",
     "publishConfig": {

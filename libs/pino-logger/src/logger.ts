@@ -5,6 +5,7 @@ export const createLogger = (defaultConfig: LoggerOptions = {}, destination?: De
         {
             ...defaultConfig,
             timestamp: false,
+            messageKey: 'message',
             formatters: {
                 level: (label) => {
                     return { level: label }
