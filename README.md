@@ -50,11 +50,11 @@ yarn add -D pino-pretty
 npm i --save-dev pino-pretty
 ```
 
-Simply pipe the output of your development server into pino pretty:
+Simply pipe the output of your development server into pino pretty with correct message key:
 
 ```
 "scripts": {
-  "dev": "<your server> | pino-pretty",
+  "dev": "<your server> | pino-pretty --messageKey=message",
 }
 ```
 
@@ -284,3 +284,10 @@ If you want to use the new secureLogger feature, refer to the Securelogs docs ab
 The only change is that the default message key is `message` instead of `msg`. This doesn't affect you
 if you only view logs in Elastic, but if you have used some manual filters in Grafan (`{{ .msg }}`), you will need to change it to `{{ .message }}`.
 
+If you use `pino-pretty` you will also need to change the `--messageKey` option to `message` instead of `msg`.
+
+```bash
+"scripts": {
+  "dev": "<dev> | pino-pretty --messageKey=message"
+}
+```
